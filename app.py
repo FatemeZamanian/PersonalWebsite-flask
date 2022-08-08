@@ -1,9 +1,6 @@
 from flask import Flask, render_template, request, redirect
-
-
 app = Flask(__name__)
 
-#route for bind url to functions
 #index
 @app.route("/")
 def index():
