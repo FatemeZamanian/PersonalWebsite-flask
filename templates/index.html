@@ -1,8 +1,8 @@
 <html>
     <head>
-        <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='StyleSheets/style.css') }}" >
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
-    <body style="background-image: url('static/dack3.jpeg')">
+    <body style="background-image: url('static/images/dack3.jpeg')">
     
         <div id=main >
             <div id=me>
@@ -14,14 +14,14 @@
                 </p>
             </div>
             <a href="/resume" style="left: 300px; top: 180px;" id="btn"> See my Resume </a>
-            <a href="/github" style="left: 240px; top: 200px;  background-image:url('static/github.png');" id="lbtn0" class="lbtn">    </a>
-            <a href="/youtube" style="left: 220px; top: 270px;  background-image:url('static/youtube.png');" class="lbtn">  </a>
-            <a href="/insta" style="left: 460px; top: 200px;  background-image:url('static/insta.png');" class="lbtn">  </a>  
-            <a href="/linkedin" style="left: 480px; top: 270px;  background-image:url('static/linkedin.png');" class="lbtn">  </a>  
+            <a href="/github" style="left: 240px; top: 200px;  background-image:url('static/images/github.png');" id="lbtn0" class="lbtn">    </a>
+            <a href="/youtube" style="left: 220px; top: 270px;  background-image:url('static/images/youtube.png');" class="lbtn">  </a>
+            <a href="/insta" style="left: 460px; top: 200px;  background-image:url('static/images/insta.png');" class="lbtn">  </a>  
+            <a href="/linkedin" style="left: 480px; top: 270px;  background-image:url('static/images/linkedin.png');" class="lbtn">  </a>  
         </div>
       
-        <img id=pic src="static/me.jpg">
-        <script type="text/javascript" src="{{ url_for('static', filename='/script.js') }}"></script>
+        <img id=pic src="{{ url_for('static', filename='images/me.jpg') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 
     </body>
 </html>
