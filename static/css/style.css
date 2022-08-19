@@ -77,4 +77,58 @@ p{
     line-height: 5p0x;
 
 }
+
+#headerpic{
+    /* border: 1px solid transparent;
+    border-radius: 10%; */
+    position: absolute;
+    margin: auto 10% ;
+    width: 80%;
+    top: 100px;
+    height: 250px;
+}
+
+#headerpic p{
+    padding: 10px 60px;
+    font-size: 40px;
+    position: absolute;
+}
+
+.bar{
+    width: 530px;
+    height: 50px;
+    border-radius:30px;
+    border:1px solid gray;
+    position:absolute;
+    right:280px;
+    top: 150px;
+    display: flex;
+}
+.searchbar{
+border:none;
+font-size:16px;
+outline: none;
+margin-left: 10%;
+width:530px;
+background: transparent;
+text-align: left;
+}
+.bar a{
+    background-color: rgb(51, 17, 204);
+    border-radius: 100%;
+    width: 10%;
+    margin: 0.5%;
+    border:transparent 0px;  
+    text-align: center; 
+}
+
+.bar a img{
+  width: 80%;
+  
+}
+
+.searchbar:focus{
+    color: wheat;
+   }
+
     
