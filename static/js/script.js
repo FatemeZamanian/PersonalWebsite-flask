@@ -1,5 +1,5 @@
 let resbtn=document.getElementById("btn")
-let btns=document.getElementsByClassName("lbtn");
+let btns=document.getElementsByClassName("mg");
 
 
 
@@ -14,11 +14,11 @@ resbtn.onmouseleave=function(){
 
 
 btns[0].onmouseenter=function(){
-    btns[0].style.background = "url('static/images/github.gif')";
+    btns[0].src = "static/images/insta2.png";
 };
 
 btns[0].onmouseleave=function(){
-    btns[0].style.background = "url('static/images/github.png')";
+    btns[0].src = "static/images/insta1.png";
 };
 
 btns[1].onmouseenter=function(){
