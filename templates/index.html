@@ -4,7 +4,7 @@
         <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}">
     </head>
     <body style="background-color: rgb(169, 176, 214);">
-    
+    <div id="sec1">
         <div id=headerpic style="background-image:url('static/images/back2.jpeg');">
             <p>
                     Hi Welcome to my website...!
@@ -18,6 +18,40 @@
             </div>
             
         </div>
+<div class="flex-container">
+  <div>1</div>
+  <div>2</div>
+  <div>3</div>  
+  <div>4</div>
+  <div>5</div>
+  <div>6</div>  
+  <div>7</div>
+  <div>8</div>
+  <div>9</div>
+  <div>10</div>
+</div>
+</div>
+<div id="sec2">
+    <div style="height: 100%; background-image: url('static/images/back2.jpeg')">
+    
+        <div id=main >
+            <div id=me>
+                <p>
+                    Hi im Fateme<br>
+                    I am 23 years old and live in Mashhad<br>
+                    I have a bachelor's degree in software engineering.<br>
+                    Now I learn programming and teach it...<br>
+                </p>
+            </div>
+            <a href="/resume" style="left: 300px; top: 180px;" id="btn"> See my Resume </a>
+        </div>
+      
+        <img id=pic src="{{ url_for('static', filename='images/me.jpg') }}">
+        <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
+
+    </div>
+
+</div>
         <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"></script>
 
     </body>

@@ -29,7 +29,7 @@ body {
     border-style: solid;
     border-radius: 50px;
     border-color: cyan;
-    top: 150px;
+    top: 650px;
     left: 300px;
 
 }
@@ -45,20 +45,15 @@ body {
 }
 
 #btn{
-    border-style: dotted;
-    border-width: 10px;
-    border-radius: 50%;
+    margin: 30px auto;
     position: absolute;
-    width: 150px ;
-    height: 150px;
-    font-size:15px;
-    border-color:purple;
-    background-color: rgb(204, 137, 204);
+    width: 180px ;
+    font-size:25px;
+    background-color: rgb(23, 107, 6);
     color: white;
     text-decoration: none;
-    padding-top: 50px;
-    padding-bottom: 50px;
-    box-sizing: border-box;
+    padding-top: 20px;
+    padding-bottom: 20px;
     text-align: center;
 }
 
@@ -72,19 +67,16 @@ body {
 
 p{
     font-size: 20px;
-    color:white;
+    color:rgb(24, 2, 65);
     font-family: sans-serif;
-    line-height: 5p0x;
+    line-height: 30px;
 
 }
 
 #headerpic{
-    /* border: 1px solid transparent;
-    border-radius: 10%; */
-    position: absolute;
-    margin: auto 10% ;
+    position: relative;
+    margin: 30px 10% ;
     width: 80%;
-    top: 100px;
     height: 250px;
 }
 
@@ -92,6 +84,7 @@ p{
     padding: 10px 60px;
     font-size: 40px;
     position: absolute;
+    color: white;
 }
 
 .bar{
@@ -130,5 +123,29 @@ text-align: left;
 .searchbar:focus{
     color: wheat;
    }
+
+   .flex-container {
+    position: relative;
+    display: flex;
+    width: 80%;
+    margin: auto 10% ;
+    height: auto;
+    flex-wrap: wrap;
+    background-color: rgb(2, 23, 44);
+  }
+  
+  .flex-container > div {
+    background-color: #f1f1f1;
+    width: 170px;
+    margin: 15px;
+    text-align: center;
+    line-height: 75px;
+    font-size: 30px;
+  }
+
+#sec2{
+    margin-top: 20px;
+    height: 100%;
+}
 
     

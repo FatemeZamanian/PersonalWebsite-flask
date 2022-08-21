@@ -34,10 +34,8 @@ btns[3].onmouseleave=function(){
 };
 
 resbtn.onmouseenter=function(){
-    resbtn.style.backgroundColor="purple";
-    resbtn.style.borderColor="rgb(204, 137, 204)"
+    resbtn.style.backgroundColor="rgb(0,0,0)";
 };
 resbtn.onmouseleave=function(){
     resbtn.style.backgroundColor="rgb(204, 137, 204)";
-    resbtn.style.borderColor="purple";
 };
