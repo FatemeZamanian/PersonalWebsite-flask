@@ -124,7 +124,7 @@ text-align: left;
     color: wheat;
    }
 
-   .flex-container {
+.flex-container {
     position: relative;
     display: flex;
     width: 80%;
@@ -134,7 +134,7 @@ text-align: left;
     background-color: rgb(2, 23, 44);
   }
   
-  .flex-container > div {
+.flex-container > div {
     background-color: #f1f1f1;
     width: 170px;
     margin: 15px;

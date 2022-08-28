@@ -1,5 +1,31 @@
 from flask import Flask, render_template, request, redirect
+from flask_sqlalchemy import SQLAlchemy
+from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
+from flask_bcrypt import Bcrypt
+
+
 app = Flask(__name__)
+db = SQLAlchemy(app)
+login_manager = LoginManager(app)
+bcrypt = Bcrypt(app)
+login_manager = LoginManager(app)
+
+
+class User(db.Model, UserMixin):
+    id = db.Column(db.Integer, primary_key=True)
+    username = db.Column(db.String(80), unique=True, nullable=False)
+    email = db.Column(db.String(120), unique=True, nullable=False)
+
+    def __repr__(self):
+        return '<User %r>' % self.username
+
+
+@login_manager.user_loader
+def load_user(email):
+    user = User()
+    user.id = email
+    return user
+
 
 #index
 @app.route("/")
@@ -9,7 +35,6 @@ def index():
 # @app.route("/me")
 # def me():
 #     return render_template('me.html')
-
 
 @app.route('/resume')
 def resume():
@@ -33,3 +58,20 @@ def linkedin():
 def youtube():
     return redirect("https://youtube.com/channel/UCfI5V_TExc9ntvGSdUNjJ4Q")
 
+
+@app.route('/admin/login', methods=['POST', 'GET'])
+def login():
+    if request.method == 'GET':
+        return render_template('admin/login.html')
+     
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        result = db.session.execute(f"SELECT * FROM users WHERE email='{email}'").fetchone()
+        if result is not None and bcrypt.check_password_hash(result["password"], password):
+            user = User()
+            user.id = email
+            login_user(user)
+            return redirect("/admin/dashboard")
+        else:
+            return redirect("/admin/login")
