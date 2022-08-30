@@ -8,7 +8,6 @@ app = Flask(__name__)
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 bcrypt = Bcrypt(app)
-login_manager = LoginManager(app)
 
 
 class User(db.Model, UserMixin):
