@@ -2,13 +2,18 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
 from flask_bcrypt import Bcrypt
+import config
 
 
-app = Flask(__name__)
+app = Flask(__name__ ,template_folder='templates')
+app.secret_key = 'super secret string' 
 db = SQLAlchemy(app)
 login_manager = LoginManager(app)
 bcrypt = Bcrypt(app)
 
+app.config['SQLALCHEMY_DATABASE_URI'] = config.database_url
+app.config['UPLOAD_FOLDER'] = config.upload_folder
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
