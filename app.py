@@ -79,3 +79,8 @@ def login():
             return redirect("/admin/dashboard")
         else:
             return redirect("/admin/login")
+
+@app.route('/admin/dashboard')
+@login_required
+def admin_dashboard():
+    return render_template('admin/dashboard.html')
