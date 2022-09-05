@@ -1,5 +1,5 @@
 
-database_host = "sajjadaemmi-db"
+database_host = "fatemezamanian-db"
 database_user = "root"
 database_password = ""
 database_name = ""

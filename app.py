@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
 from flask_bcrypt import Bcrypt
+import sqlite3
 import config
 
 
@@ -15,6 +16,8 @@ app.config['SQLALCHEMY_DATABASE_URI'] = config.database_url
 app.config['UPLOAD_FOLDER'] = config.upload_folder
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
+
+
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)
     username = db.Column(db.String(80), unique=True, nullable=False)
@@ -22,6 +25,12 @@ class User(db.Model, UserMixin):
 
     def __repr__(self):
         return '<User %r>' % self.username
+
+
+######test db
+# db.session.execute("INSERT INTO users(id,name,email,password,role) VALUES('5','ed','ert','123456','ewsd';")
+
+
 
 
 @login_manager.user_loader
@@ -63,11 +72,24 @@ def youtube():
     return redirect("https://youtube.com/channel/UCfI5V_TExc9ntvGSdUNjJ4Q")
 
 
+@login_manager.user_loader
+def load_user(user_id):
+   conn = sqlite3.connect('database.db')
+   curs = conn.cursor()
+   curs.execute("SELECT * from login where id = (?)",[user_id])
+   lu = curs.fetchone()
+   if lu is None:
+      return None
+   else:
+      return User(int(lu[0]), lu[1], lu[2])
+
+
+
+
 @app.route('/admin/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'GET':
         return render_template('admin/login.html')
-     
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
