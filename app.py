@@ -27,6 +27,7 @@ class User(db.Model, UserMixin):
         return '<User %r>' % self.username
 
 
+
 ######test db
 # db.session.execute("INSERT INTO users(id,name,email,password,role) VALUES('5','ed','ert','123456','ewsd';")
 
@@ -72,16 +73,6 @@ def youtube():
     return redirect("https://youtube.com/channel/UCfI5V_TExc9ntvGSdUNjJ4Q")
 
 
-@login_manager.user_loader
-def load_user(user_id):
-   conn = sqlite3.connect('database.db')
-   curs = conn.cursor()
-   curs.execute("SELECT * from login where id = (?)",[user_id])
-   lu = curs.fetchone()
-   if lu is None:
-      return None
-   else:
-      return User(int(lu[0]), lu[1], lu[2])
 
 
 
@@ -106,3 +97,4 @@ def login():
 @login_required
 def admin_dashboard():
     return render_template('admin/dashboard.html')
+
