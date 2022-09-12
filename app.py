@@ -1,3 +1,5 @@
+import os
+from datetime import datetime
 from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin, LoginManager, login_required, current_user, login_user, logout_user
@@ -73,10 +75,6 @@ def youtube():
     return redirect("https://youtube.com/channel/UCfI5V_TExc9ntvGSdUNjJ4Q")
 
 
-
-
-
-
 @app.route('/admin/login', methods=['POST', 'GET'])
 def login():
     if request.method == 'GET':
@@ -97,4 +95,31 @@ def login():
 @login_required
 def admin_dashboard():
     return render_template('admin/dashboard.html')
+
+@app.route('/admin/blog')
+@login_required
+def admin_blog():
+    posts = db.session.execute(f"SELECT * FROM posts ORDER BY create_time DESC")
+    return render_template('admin/blog.html', posts=posts)
+
+@app.route('/admin/blog/add', methods=['POST', 'GET'])
+@login_required
+def admin_blog_add():
+    if request.method == 'GET':
+        return render_template('admin/add_post.html')
+    
+    if request.method == 'POST':
+        if 'image' not in request.files or not request.files['image']:
+            image_path = ""
+        else:
+            image_file = request.files['image']
+            image_path = os.path.join(app.config['UPLOAD_FOLDER'], "images/posts/", image_file.filename)
+            image_file.save(image_path)
+        
+        title = request.form['title']
+        body = request.form['body']
+        body = body.replace("'","''")
+        db.session.execute(f"INSERT INTO posts(title, body, image,category_id,create_time) VALUES('{title}', '{body}', '{image_path}','{2}','{datetime.now()}')")
+        db.session.commit()
+        return redirect("/admin/blog")
 
